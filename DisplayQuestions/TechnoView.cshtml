@@ -1,0 +1,74 @@
+﻿@model  DXC_Project.Models.QuestionsContext
+
+@{
+    int count = 0;
+}
+@foreach (var item in Model.Questions_java)
+{
+
+    <p>
+        <div class="col-sm-1">@(++count)</div>
+        <div class="col-sm-11">
+            @Html.DisplayFor(modelItem => item.java_ques)
+            <br />
+
+            @Html.RadioButton(item.java_ans, item.java_opt_1)@Html.DisplayFor(modelItem => item.java_opt_1)
+            <br />
+            @Html.RadioButton(item.java_ans, item.java_opt_2)@Html.DisplayFor(modelItem => item.java_opt_2)
+            <br />
+            @Html.RadioButton(item.java_ans, item.java_opt_3)@Html.DisplayFor(modelItem => item.java_opt_3)
+            <br />
+            @Html.RadioButton(item.java_ans, item.java_opt_4)@Html.DisplayFor(modelItem => item.java_opt_4)
+            <br />
+            @Html.RadioButton(item.java_ans, "Not Attempted", new { @style = "visibility:hidden", @checked = "checked" })
+            <br />
+
+        </div>
+    </p>
+}
+@foreach (var item in Model.Questions_python)
+{
+
+    <p>
+        <div class="col-sm-1">@(++count)</div>
+        <div class="col-sm-11">
+            @Html.DisplayFor(modelItem => item.java_ques)
+            <br />
+
+            @Html.RadioButton(item.java_ans, item.java_opt_1)@Html.DisplayFor(modelItem => item.java_opt_1)
+            <br />
+            @Html.RadioButton(item.java_ans, item.java_opt_2)@Html.DisplayFor(modelItem => item.java_opt_2)
+            <br />
+            @Html.RadioButton(item.java_ans, item.java_opt_3)@Html.DisplayFor(modelItem => item.java_opt_3)
+            <br />
+            @Html.RadioButton(item.java_ans, item.java_opt_4)@Html.DisplayFor(modelItem => item.java_opt_4)
+            <br />
+            @Html.RadioButton(item.java_ans, "Not Attempted", new { @style = "visibility:hidden", @checked = "checked" })
+            <br />
+
+        </div>
+    </p>
+}
+@foreach (var item in Model.Questions_csharp)
+{
+
+    <p>
+        <div class="col-sm-1">@(++count)</div>
+        <div class="col-sm-11">
+            @Html.DisplayFor(modelItem => item.java_ques)
+            <br />
+
+            @Html.RadioButton(item.java_ans, item.java_opt_1)@Html.DisplayFor(modelItem => item.java_opt_1)
+            <br />
+            @Html.RadioButton(item.java_ans, item.java_opt_2)@Html.DisplayFor(modelItem => item.java_opt_2)
+            <br />
+            @Html.RadioButton(item.java_ans, item.java_opt_3)@Html.DisplayFor(modelItem => item.java_opt_3)
+            <br />
+            @Html.RadioButton(item.java_ans, item.java_opt_4)@Html.DisplayFor(modelItem => item.java_opt_4)
+            <br />
+            @Html.RadioButton(item.java_ans, "Not Attempted", new { @style = "visibility:hidden", @checked = "checked" })
+            <br />
+
+        </div>
+    </p>
+}
