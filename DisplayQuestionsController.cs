@@ -10,15 +10,24 @@ namespace DXC_Project.Controllers
     public class DisplayQuestionsController : Controller
     {
         Questions dbcontext = new Questions();
-        double correct = 0, skipped = 0, wrong = 0, marks = 0;
+        double correct = 0, skipped = 0, wrong = 0,correctaptitude=0,skippedaptitude=0,wrongaptitude=0, correcttechnical = 0, skippedtechnical = 0, wrongtechnical = 0,marks = 0,marksaptitude=0,markstechnical=0;
         // GET: DisplayQuestions
+
+       
         public ActionResult Index12()
         {
+            //Timer
+            
 
             int numberapti = 20;
             int numberjava = 10;
             int numberpython = 10;
             int numbercsharp = 10;
+            int experience = 2;
+            List<string> Technology = new List<string>
+            { 
+                "java","csharp"
+            };
 
             string querypython = String.Format("select top {0} * from Java_tbl1 where TECHST=2 order by newid()  ", numberpython);
             IEnumerable<Java_tbl1> listpython = dbcontext.Java_tbl1.SqlQuery(querypython).ToList();
@@ -43,9 +52,15 @@ namespace DXC_Project.Controllers
                 Questions_csharp=listcsharp,
                 Questions_apti=listaptitude
             };
+            if (Session["Rem_Time"] == null)
+            {
+                Session["Rem_Time"] = DateTime.Now.AddMinutes(1).ToString("dd-MM-yyyy h:mm:ss tt");
+            }
+            ViewBag.Rem_Time = Session["Rem_Time"];
             return View(model);
         }
         [HttpPost]
+        //[ActionName("Index12")]
         public ActionResult Index12(FormCollection form)
         {
             int k = 0;
@@ -58,15 +73,33 @@ namespace DXC_Project.Controllers
             {
                 if (item.java_ans == form[k])
                 {
-                    ++correct;
+                    ++correctaptitude;
                 }
                 else if (form[k] == "Not Attempted")
                 {
-                    ++skipped;
+                    ++skippedaptitude;
                 }
                 else
                 {
-                    ++wrong;
+                    ++wrongaptitude;
+                }
+                ++k;
+            }
+            
+
+            foreach (var item in listjava)
+            {
+                if (item.java_ans == form[k])
+                {
+                    ++correcttechnical;
+                }
+                else if (form[k] == "Not Attempted")
+                {
+                    ++skippedtechnical;
+                }
+                else
+                {
+                    ++wrongtechnical;
                 }
                 ++k;
             }
@@ -74,32 +107,15 @@ namespace DXC_Project.Controllers
             {
                 if (item.java_ans == form[k])
                 {
-                    ++correct;
+                    ++correcttechnical;
                 }
                 else if (form[k] == "Not Attempted")
                 {
-                    ++skipped;
+                    ++skippedtechnical;
                 }
                 else
                 {
-                    ++wrong;
-                }
-                ++k;
-            }
-
-            foreach (var item in listjava)
-            {
-                if (item.java_ans == form[k])
-                {
-                    ++correct;
-                }
-                else if (form[k] == "Not Attempted")
-                {
-                    ++skipped;
-                }
-                else
-                {
-                    ++wrong;
+                    ++wrongtechnical;
                 }
                 ++k;
             }
@@ -107,22 +123,28 @@ namespace DXC_Project.Controllers
             {
                 if (item.java_ans == form[k])
                 {
-                    ++correct;
+                    ++correcttechnical;
                 }
                 else if (form[k] == "Not Attempted")
                 {
-                    ++skipped;
+                    ++skippedtechnical;
                 }
                 else
                 {
-                    ++wrong;
+                    ++wrongtechnical;
                 }
                 ++k;
             }
             
-
-            marks = correct - (wrong * 0.25);
-            Dictionary<string, double> result = new Dictionary<string, double>() { { "Marks", marks }, { "Correct", correct }, { "Wrong", wrong }, { "Not Attempted", skipped } };
+            marksaptitude= correctaptitude - (wrongaptitude * 0.25);
+            markstechnical = correcttechnical - (wrongtechnical * 0.25);
+            marks = marksaptitude+markstechnical;
+            correct = correctaptitude + correcttechnical;
+            wrong = wrongaptitude + wrongtechnical;
+            skipped = skippedaptitude + skippedtechnical;
+            Dictionary<string, double> result = new Dictionary<string, double>() { { "Marks", marks }, { "Correct", correct }, { "Wrong", wrong }, { "Skipped", skipped },
+            { "AptitudeMarks", marksaptitude }, { "AptitudeCorrect", correctaptitude }, { "AptitudeWrong", wrongaptitude }, { "AptitudeSkipped", skippedaptitude },
+            { "TechnicalMarks", markstechnical }, { "TechnicalCorrect", correcttechnical }, { "TechnicalWrong", wrongtechnical }, { "TechnicalSkipped", skippedtechnical }};
             TempData["result"] = result;
             return RedirectToAction("Submit12");
         }

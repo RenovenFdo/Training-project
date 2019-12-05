@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Instruction";
+    Layout = "~/Views/Shared/_LayoutQuestion.cshtml";
+}
+
+<h3>Instructions for the Test: <span style="float:right;font-size:15px">Total Duration: 80 Minutes</span></h3>
+<h5 style="color:darkred;">Please read the instructions carefully before starting the test.</h5>
+<br />
+<ol>
+    <li>Click <b>Start Test</b> on the bottom of the screen to begin the test.</li>
+    <li>The Count Down Ctimer at the top Right side of the screen will display left out time to closure from where you can monitor the time you have to complete the exam.</li>
+    <li>The test contains two sections <b>Section-I General Aptitude Test</b> and<b> Section-II Technical Aptitude Test</b></li>
+    <li><b>Section-I</b> contains <b>20</b> questions and <b>Section-II</b> contains <b>30</b> questions.</li>
+    <li>There are two buttons to navigate between the two sections.</li>
+    <li>Candidates will be allowed to shuffle between the two sections anytime during the examination as per their convinience. </li>
+    <li>All the questions are of MCQ type and every question has only one correct option.</li>
+    <li>Each correct answer carries <span style="color:yellowgreen;font:bolder">+1 Mark</span> and each wrong answer carries <span style="color:red;font:bolder">-0.25 Mark</span> </li>
+    <li>Candidate can change their response of attempted answer anytime during the examination slot time by clicking another answer which candidate wants to change.</li>
+    <li>All the answered questions will be counted for calculating the final score.</li>
+    <li>Do not click final <b>Submit Test</b> button on the bottom of the Test window unless you have completed the exam. In case u click <b>Submit Test</b> you will not be permitted to continue. </li>
+    <li>Score obtained will be displayed immediately after the test.</li>
+</ol>
+<br />
+<h4>All The best.</h4>
+
+<div style="margin-left:650px">
+    <input type="submit" class="btn btn-primary" value="Begin Test" onclick="location.href='@Url.Action("Index12", "DisplayQuestions")'"  />
+</div>

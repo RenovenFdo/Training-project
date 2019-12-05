@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "HomePage";
+}
+
+@section head{
+    <style type="text/css">
+        body {
+            /*background-image: url('/images/CommonWallpaper.jpg');*/
+            background-color: #F7B733;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            margin: 0;
+        }
+    </style>
+}
+<body>
+    <h2>Index</h2>
+    @*<img src="@Url.Content(Model.img_path)" style="height:15rem;width:10rem" />*@
+
+    <div class="jumbotron">
+        <h1 class="display-4">Hello, User!</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        </p>
+    </div>
+    <br /><br /><br />
+
+    <div class="col-sm-12" style="background-color:#0f2862;padding:25px;border-radius:20px">
+        <br />
+        <div class="row">
+            <div class="col-sm-4">
+                <div id="taketest" class="card" style="width: 18rem;border-radius:15px;border-color:darkgreen">
+                    <img class="card-img-top" src="~/images/TakeTest.png" alt="Card image cap" style="height:15rem;border-radius:15px">
+                    <div class="card-body" style="text-align:center;padding:2px">
+                        <h5 class="card-title">Take Test</h5>
+                        <p class="card-text">Test your skills in the General Aptitude and the Technical Apptitude sections.</p><br />
+                        <a href="~/Home/Instruction/" class="btn btn-primary stretched-link">Take Test</a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div  class="col-sm-4">
+                <div id="performance" class="card" style="width: 18rem;border-radius:15px;border-color:darkgreen">
+                    <img class="card-img-top" src="~/images/YourScore.jpg" alt="Card image cap" style="height:15rem;border-radius:15px">
+                    <div class="card-body" style="text-align:center;padding:2px">
+                        <h5 class="card-title">View Your Scores</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary stretched-link">View Scores</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div id="leaderboard" class="card" style="width: 18rem;border-radius:15px;border-color:darkgreen">
+                    <img class="card-img-top" src="~/images/Leaderboard.png" alt="Card image cap" style="height:15rem;border-radius:15px">
+                    <div class="card-body" style="text-align:center;padding:2px">
+                        <h5 class="card-title">Leaderboard</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary stretched-link">View Leaderboard</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+    </div>
+    
+</body>
+
+

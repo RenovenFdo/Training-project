@@ -6,82 +6,98 @@
 }
 
 
-<h2>Test</h2>
-<div class="btn-group">
-    <button type="button" class="btn btn-primary" onclick="myFunction('myDIVaptitude')">Aptitude</button>
-    <button type="button" class="btn btn-primary" onclick="myFunction('myDIVtechnology')">Technology</button>
-</div>
 
 
+    <div style="align-content:center">
+        <div class=bg-primary style="position:fixed;top:70px;right:41px;border:solid 2px black;padding:10px;border-radius:10px">
+            <h4>Time Left:</h4> <h3 id="timecountdown"></h3>
 
-@*@{
-        int count = 0;
-    }*@
-<div class="col-sm-10">
-    @using (Html.BeginForm())
-    {
-        <div id="myDIVaptitude" style="display:block" >
-            @Html.Partial("AptitudeView")
-        </div>
-        <div id="myDIVtechnology" style="display:none" >
-            @Html.Partial("TechnoView")
         </div>
 
-        <div style="margin-left:100px">
-            <input id="submit" type="submit" class="btn btn-primary  btn-block" value="Submit Test" />
-        </div>
-    }
 
-</div>
+        <div class="btn-group" style="position:fixed;top:190px;right:80px">
+            <button id="button1" type="button" class="btn btn-primary" onclick="myFunction('myDIVaptitude')">Section I</button>
+            <button id="button2" type="button" class="btn btn-primary" onclick="myFunction('myDIVtechnology')">Section II</button>
+        </div>
+    </div>
+
+
+    <div >
+        @using (Html.BeginForm())
+        {
+            <div id="myDIVaptitude" style="display:block">
+                @Html.Partial("AptitudeView")
+            </div>
+            <div id="myDIVtechnology" style="display:none">
+                @Html.Partial("TechnoView")
+            </div>
+
+            <div style="margin-left:100px">
+                <input id="submit" type="submit" class="btn btn-primary  btn-block" value="Submit Test" />
+            </div>
+        }
+
+    </div>
+
 <script>
-    //function myFunction() {
-    //    var x = document.getElementsByClassName("myDIV");
-    //    if (x.style.display == "none") {
-    //        x.style.display = "block";
-    //    } else {
-    //        x.style.display = "none";
-    //    }
-    //}
-//       function myFunction() {
 
-//           var x = document.getElementsByClassName("myDIV");  
-  
-//  if (x.style.display == "none") 
-//  {
-//    x.style.display = "block";
-//  } 
-//  else {
-//    x.style.display = "none";
-//  }  
-//}
-    //function myFunction1() {
-    //    var x = document.getElementById("myDIVtech");
-    //    if (x.style.display === "none") {
-    //        x.style.display = "block";
-    //    } else {
-    //        x.style.display = "none";
-    //    }
-    //}
     var divs = ["myDIVtechnology", "myDIVaptitude"];
-var visibleDivId = null;
-function myFunction(divId) {
-  if(visibleDivId === divId) {
+    var visibleDivId = null;
+    function myFunction(divId) {
+    if (visibleDivId === divId)
+    {
     //visibleDivId = null;
-  } else {
+        } else
+    {
     visibleDivId = divId;
-  }
-  hideNonVisibleDivs();
-}
-function hideNonVisibleDivs() {
-  var i, divId, div;
-  for(i = 0; i < divs.length; i++) {
+    }
+    hideNonVisibleDivs();
+    }
+    function hideNonVisibleDivs() {
+    var i, divId, div;
+    for (i = 0; i < divs.length; i++) {
     divId = divs[i];
     div = document.getElementById(divId);
-    if(visibleDivId === divId) {
-      div.style.display = "block";
+    if (visibleDivId === divId) {
+        div.style.display = "block";
     } else {
-      div.style.display = "none";
+        div.style.display = "none";
     }
-  }
-}
-</script>
+    }
+    }
+     var dt = '@ViewBag.Rem_Time';
+    var dateAr = dt.split('-');
+    var newDate = dateAr[1] + '/' + dateAr[0] + '/' + dateAr[2];
+
+    var end = new Date(dateAr[1] + '/' + dateAr[0] + '/' + dateAr[2]);
+
+    var _second = 1000;
+    var _minute = _second * 60;
+    var _hour = _minute * 60;
+    var _day = _hour * 24;
+    var timer;
+
+    function showRemaining() {
+        var now = new Date();
+        var distance = end - now;
+        if (distance < 0) {
+            clearInterval(timer);
+            document.getElementById('timecountdown').innerHTML = 'Count Down Ends!';
+            //document.getElementById('submit').trigger('click');
+            document.getElementById('submit').click();
+            //window.location.href = '/DisplayQuestions/Index12';
+            return;
+        }
+        var days = Math.floor(distance / _day);
+        var _hours = Math.floor((distance % _day) / _hour);
+        var _minutes = Math.floor((distance % _hour) / _minute);
+        var _seconds = Math.floor((distance % _minute) / _second);
+
+        document.getElementById('timecountdown').innerHTML = '' //+ _hours;
+        document.getElementById('timecountdown').innerHTML += ' Mins: ' + _minutes;
+        document.getElementById('timecountdown').innerHTML += ' Secs: ' + _seconds;
+    }
+    timer = setInterval(showRemaining, 1000);
+        </script>
+
+

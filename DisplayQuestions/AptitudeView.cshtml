@@ -3,25 +3,29 @@
 @{
     int count = 0;
 }
+<h3 class="text-center">Section-I Aptitude</h3>
+
+
 @foreach (var item in Model.Questions_apti)
 {
-    <p>
-        <div class="col-sm-1">@(++count)</div>
-        <div class="col-sm-11">
-            @Html.DisplayFor(modelItem => item.java_ques)
-            <br />
+    
+        <div class="col-lg-10">
 
-            @Html.RadioButton(item.java_ans, item.java_opt_1)@Html.DisplayFor(modelItem => item.java_opt_1)
-            <br />
-            @Html.RadioButton(item.java_ans, item.java_opt_2)@Html.DisplayFor(modelItem => item.java_opt_2)
-            <br />
-            @Html.RadioButton(item.java_ans, item.java_opt_3)@Html.DisplayFor(modelItem => item.java_opt_3)
-            <br />
-            @Html.RadioButton(item.java_ans, item.java_opt_4)@Html.DisplayFor(modelItem => item.java_opt_4)
-            <br />
-            @Html.RadioButton(item.java_ans, "Not Attempted", new { @style = "visibility:hidden", @checked = "checked" })
-            <br />
+                    <span><b>@(++count)</b></span><span>.</span>&nbsp;@Html.DisplayFor(modelItem => item.java_ques)
+                    <br /><br />
 
+                    @Html.RadioButton(item.java_ans, item.java_opt_1)&nbsp;@Html.DisplayFor(modelItem => item.java_opt_1)
+                    <br />
+                    @Html.RadioButton(item.java_ans, item.java_opt_2)&nbsp;@Html.DisplayFor(modelItem => item.java_opt_2)
+                    <br />
+                    @Html.RadioButton(item.java_ans, item.java_opt_3)&nbsp;@Html.DisplayFor(modelItem => item.java_opt_3)
+                    <br />
+                    @Html.RadioButton(item.java_ans, item.java_opt_4)&nbsp;@Html.DisplayFor(modelItem => item.java_opt_4)
+                    <br />
+                    @Html.RadioButton(item.java_ans, "Not Attempted", new { @style = "visibility:hidden", @checked = "checked" })
+                    <br />
+
+             
         </div>
-    </p>
+    
 }

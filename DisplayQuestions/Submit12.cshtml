@@ -4,8 +4,79 @@
 }
 
 <h2>Submit</h2>
-@foreach (var item in ViewBag.total)
-{
-    <h2>@item.Key</h2>
-    <h1>@item.Value</h1>
-}
+    <table  cellspacing="5" cellpadding="5">
+        <thead>
+            <tr>
+                <td></td>
+            <td>
+                <h3>Aptitude</h3>
+            </td>
+            <td>
+                <h3>Technical</h3>
+            </td>
+            <td>
+                <h3>Total</h3>
+            </td>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <h3>Correct</h3>
+                </td>
+                <td>
+                    @ViewBag.total["AptitudeCorrect"]
+                </td>
+                <td>
+                    @ViewBag.total["TechnicalCorrect"]
+                </td>
+                <td>
+                    @ViewBag.total["Correct"]
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3>Wrong</h3>
+                </td>
+                <td>
+                    @ViewBag.total["AptitudeWrong"]
+                </td>
+                <td>
+                    @ViewBag.total["TechnicalWrong"]
+                </td>
+                <td>
+                    @ViewBag.total["Wrong"]
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3>Skipped</h3>
+                </td>
+                <td>
+                    @ViewBag.total["AptitudeSkipped"]
+                </td>
+                <td>
+                    @ViewBag.total["TechnicalSkipped"]
+                </td>
+                <td>
+                    @ViewBag.total["Skipped"]
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3>Marks</h3>
+                </td>
+                <td>
+                    @ViewBag.total["AptitudeMarks"]
+                </td>
+                <td>
+                    @ViewBag.total["TechnicalMarks"]
+                </td>
+                <td>
+                    @ViewBag.total["Marks"]
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
